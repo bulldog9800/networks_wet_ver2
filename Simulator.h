@@ -36,7 +36,6 @@ class Simulator {
 public:
     Simulator(double total_time, double lambda, double mu, vector<double> probabilities);
     void simulate();
-    void printResults() const;
 
 
 };

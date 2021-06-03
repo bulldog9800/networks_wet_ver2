@@ -145,42 +145,6 @@ void Simulator::simulate() {
 
 }
 
-void Simulator::printResults() const {
-    // Y X T'
-    cout << msgs_accepted << " " << msgs_denied << " " << final_time << " ";
-
-    // Ti
-    for ( auto t : times ) {
-        cout << t << " ";
-    }
-
-    // Zi
-    for ( auto t : times ) {
-        cout << t/final_time << " ";
-    }
-
-    // Tw
-    double total_wait_time = 0;
-    for (int i=2; i<times.size(); i++) {
-        /*
-         * Since we have the times for each line length, in every length i, i-1
-         * employees were waiting.
-         */
-        total_wait_time += times[i]* (i-1);
-    }
-    cout << total_wait_time/msgs_accepted << " ";
-
-    //Ts
-    /*
-     * At all times, except when the queue was empty, we were
-     * serving messages.
-     */
-    cout << (final_time - times[0]) / msgs_accepted << " ";
-
-    //Lambda a
-    cout << msgs_accepted / final_time;
-
-}
 
 
 
